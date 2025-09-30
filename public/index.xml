@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Jason&#39;s Blog</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Jason&#39;s Blog</description>
+    <image>
+      <title>Jason&#39;s Blog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.150.1</generator>
+    <language>cn-zh</language>
+    <lastBuildDate>Tue, 25 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My 1st post</title>
+      <link>http://localhost:1313/posts/tt/</link>
+      <pubDate>Tue, 15 Sep 2020 11:30:03 +0000</pubDate>
+      <guid>http://localhost:1313/posts/tt/</guid>
+      <description>Desc Text.</description>
+    </item>
+    <item>
+      <title>Elasticsearch ILM 自动轮转</title>
+      <link>http://localhost:1313/posts/es-ilm/</link>
+      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/es-ilm/</guid>
+      <description>Elasticsearch Index Lifecycle Management</description>
+    </item>
+    <item>
+      <title>Elasticsearch stats 里all节点和indices的区别</title>
+      <link>http://localhost:1313/posts/es-stats/</link>
+      <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/es-stats/</guid>
+      <description>Elasticsearch Dynamic Templates</description>
+    </item>
+    <item>
+      <title>Elasticsearch Dynamic Templates 配置</title>
+      <link>http://localhost:1313/posts/es-mapping-source/</link>
+      <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/es-mapping-source/</guid>
+      <description>Elasticsearch Dynamic Templates</description>
+    </item>
+    <item>
+      <title>5.1九华山旅行</title>
+      <link>http://localhost:1313/posts/5-1-travel/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/5-1-travel/</guid>
+      <description>5.1九华山旅行</description>
+    </item>
+    <item>
+      <title>MDX使用简介</title>
+      <link>http://localhost:1313/posts/how-to-use-mdx/</link>
+      <pubDate>Thu, 25 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/how-to-use-mdx/</guid>
+      <description>本文简单介绍MDX以及怎么使用</description>
+    </item>
+    <item>
+      <title>部署静态文件到远程服务器</title>
+      <link>http://localhost:1313/posts/deploy-to-remote/</link>
+      <pubDate>Tue, 23 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/deploy-to-remote/</guid>
+      <description>使用简单的ssh命令部署静态博客</description>
+    </item>
+    <item>
+      <title>第一篇blog</title>
+      <link>http://localhost:1313/posts/first-blog/</link>
+      <pubDate>Mon, 22 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/first-blog/</guid>
+      <description>用Tailwind Nextjs Theme搭建的第一篇blog</description>
+    </item>
+    <item>
+      <title>Rich Content and Shortcodes</title>
+      <link>http://localhost:1313/posts/a/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/a/</guid>
+      <description>A brief description of Hugo Shortcodes</description>
+    </item>
+  </channel>
+</rss>

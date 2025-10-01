@@ -76,6 +76,10 @@ params:
         url: posts
       - name: 标签
         url: tags
+      - name: 归档
+        url: archives
+      - name: 搜索
+        url: search
 
   # home-info mode
   homeInfoParams:
@@ -110,14 +114,23 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
+    - identifier: categories  
+      name: 主题
+      url: /categories/
+      weight: 10
+    - identifier: archives
+      name: 归档
+      url: /archives/
+      weight: 10
     - identifier: tags
       name: 标签
       url: /tags/
-      weight: 10
+      weight: 20
     - identifier: search
       name: 搜索
       url: /search/
-      weight: 20
+      weight: 30
+      
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
@@ -128,7 +141,3 @@ markup:
     # guessSyntax: true
     # lineNos: true
     # style: monokai
-services:
-  # PaperMod 使用 Giscus 时，通常不需要在这里配置
-  disqus:
-    # 保持为空或不写

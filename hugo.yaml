@@ -1,7 +1,9 @@
 baseURL: https://www.090921.xyz/
 languageCode: cn-zh
 title: Jason's Blog
-pagination.pagerSize: 5
+pagination:
+  disableAliases: false
+  pagerSize: 5
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -93,21 +95,7 @@ params:
     URL: "https://github.com/xiongba-me/jason-blog/tree/master/content/"
     Text: "编辑此页" # edit text
     appendFilePath: true # to append file path to Edit link
-  comments:
-    enabled: true
-    # 明确使用 Giscus (PaperMod 特有的 Giscus 开关)
-    giscus: true
-    repo: "xiongba-me/jason-blog" # GitHub 仓库地址
-    repoId: "R_kgDOP5tFoA" # 仓库 ID，需要在 https://giscus.app 获取
-    category: "Announcements" # 讨论分类
-    categoryId: "DIC_kwDOP5tFoM4CwGdV" # 分类 ID，需要在 https://giscus.app 获取
-    mapping: "pathname" # 页面与讨论的映射方式
-    strict: "0" # 严格匹配
-    reactionsEnabled: "1" # 启用反应
-    emitMetadata: "0" # 发送元数据
-    inputPosition: "bottom" # 输入框位置
-    theme: "preferred_color_scheme" # 主题跟随系统
-    lang: "zh-CN" # 语言设置为中文
+  comments: true
 
   # for search
   # https://fusejs.io/api/options.html
@@ -122,18 +110,14 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    - identifier: categories
-      name: 类目
-      url: /categories/
-      weight: 10
     - identifier: tags
       name: 标签
       url: /tags/
-      weight: 20
+      weight: 10
     - identifier: search
-      name: Search
-      url: /search
-      weight: 30
+      name: 搜索
+      url: /search/
+      weight: 20
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:

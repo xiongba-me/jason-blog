@@ -1,0 +1,107 @@
+<div class="mermaid-container">
+  <pre class="mermaid">
+    {{ .Inner | htmlEscape | safeHTML }}
+  </pre>
+</div>
+{{ .Page.Store.Set "hasMermaid" true }}
+
+<style>
+  .mermaid-container {
+    text-align: center;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  /* 浅色主题样式 */
+  body:not(.dark) .mermaid-container {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+  }
+  
+  /* 深色主题样式 */
+  body.dark .mermaid-container {
+    background: #2d2d2d;
+    border: 2px solid #555;
+  }
+  
+  .mermaid {
+    background: transparent !important;
+    font-size: 16px;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function updateMermaidTheme() {
+      const isDark = document.body.classList.contains('dark');
+      
+      if (window.mermaid) {
+        // 清除之前的配置
+        window.mermaid.initialize({
+          startOnLoad: false,
+          theme: 'base',
+          themeVariables: isDark ? {
+            // 深色主题配置
+            primaryColor: '#4a90e2',
+            primaryTextColor: '#ffffff',
+            primaryBorderColor: '#ffffff',
+            lineColor: '#ffffff',
+            secondaryColor: '#7ed321',
+            tertiaryColor: '#f5a623',
+            background: '#2d2d2d',
+            mainBkg: '#3d3d3d',
+            secondBkg: '#4d4d4d',
+            tertiaryBkg: '#5d5d5d',
+            nodeBkg: '#4a90e2',
+            clusterBkg: '#3d3d3d',
+            edgeLabelBackground: '#2d2d2d',
+            nodeTextColor: '#ffffff',
+            fontSize: '16px'
+          } : {
+            // 浅色主题配置
+            primaryColor: '#0366d6',
+            primaryTextColor: '#24292e',
+            primaryBorderColor: '#d1d5da',
+            lineColor: '#586069',
+            secondaryColor: '#28a745',
+            tertiaryColor: '#ffd33d',
+            background: '#ffffff',
+            mainBkg: '#f6f8fa',
+            secondBkg: '#e1e4e8',
+            tertiaryBkg: '#d1d5da',
+            nodeBkg: '#0366d6',
+            clusterBkg: '#f6f8fa',
+            edgeLabelBackground: '#ffffff',
+            nodeTextColor: '#ffffff',
+            fontSize: '16px'
+          }
+        });
+        
+        // 重新渲染所有mermaid图表
+        document.querySelectorAll('.mermaid').forEach(function(element) {
+          element.removeAttribute('data-processed');
+        });
+        window.mermaid.run();
+      }
+    }
+    
+    // 初始化
+    updateMermaidTheme();
+    
+    // 监听body class变化
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          updateMermaidTheme();
+        }
+      });
+    });
+    
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  });
+</script>

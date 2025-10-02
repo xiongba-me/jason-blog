@@ -47,9 +47,9 @@ params:
   hideSummary: false
   showtoc: false
   tocopen: false
-
+    
   assets:
-    # disableHLJS: true # to disable highlight.js
+    # disableHLJS: false # to disable highlight.js
     # disableFingerprinting: true
     favicon: "/favicon.ico"
     favicon16x16: "/favicon-16x16.png"
@@ -134,6 +134,9 @@ menu:
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
+  goldmark:
+    renderer:
+      unsafe: true
   highlight:
     noClasses: false
     # anchorLineNos: true

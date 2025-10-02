@@ -47,6 +47,7 @@ params:
   hideSummary: false
   showtoc: false
   tocopen: false
+  mermaid: true
     
   assets:
     # disableHLJS: false # to disable highlight.js

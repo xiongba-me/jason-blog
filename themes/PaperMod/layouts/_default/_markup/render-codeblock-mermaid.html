@@ -5,30 +5,3 @@
 </div>
 {{ .Page.Store.Set "hasMermaid" true }}
 
-<style>
-  .mermaid-container {
-    text-align: center;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    padding: 1rem;
-    transition: all 0.3s ease;
-  }
-  
-  /* 浅色主题样式 */
-  body:not(.dark) .mermaid-container {
-    background: #f8f9fa;
-    border: 2px solid #e9ecef;
-  }
-  
-  /* 深色主题样式 */
-  body.dark .mermaid-container {
-    background: #2d2d2d;
-    border: 2px solid #555;
-  }
-  
-  .mermaid {
-    background: transparent !important;
-    font-size: 16px;
-  }
-</style>
-

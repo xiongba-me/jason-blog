@@ -1,30 +1,63 @@
 {{- /* Comments area start */ -}}
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 {{- /* Comments area end */ -}}
-<script src="https://giscus.app/client.js"
-        data-repo="xiongba-me/jason-blog"
-        data-repo-id="R_kgDOP5tFoA"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOP5tFoM4CwGdV"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        id="giscus-script"
-        crossorigin="anonymous"
-        async>
+<script>
+  // 动态设置 Giscus 初始主题
+  function getInitialTheme() {
+    // 检查 localStorage 中的用户偏好
+    const savedTheme = localStorage.getItem('pref-theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      return savedTheme;
+    }
+
+    // 检查系统偏好
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+
+    return 'light';
+  }
+
+  // 设置 Giscus 脚本的 data-theme 属性
+  const giscusScript = document.getElementById('giscus-script');
+  if (giscusScript) {
+    giscusScript.setAttribute('data-theme', getInitialTheme());
+  }
 </script>
 
+<script src="https://giscus.app/client.js" data-repo="xiongba-me/jason-blog" data-repo-id="R_kgDOP5tFoA"
+  data-category="Announcements" data-category-id="DIC_kwDOP5tFoM4CwGdV" data-mapping="pathname" data-strict="0"
+  data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="zh-CN"
+  id="giscus-script" crossorigin="anonymous" async>
+  </script>
 
 <script>
-  // 简化的 Giscus 主题切换
+  // 增强的 Giscus 主题切换系统
+  function getCurrentTheme() {
+    // 检查 body 是否有 dark 类
+    if (document.body.classList.contains('dark')) {
+      return 'dark';
+    }
+
+    // 检查 localStorage 中的用户偏好
+    const savedTheme = localStorage.getItem('pref-theme');
+    if (savedTheme === 'dark') {
+      return 'dark';
+    } else if (savedTheme === 'light') {
+      return 'light';
+    }
+
+    // 如果没有保存的偏好，检查系统偏好
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+
+    return 'light';
+  }
+
   function updateGiscusTheme() {
-    const isDark = document.body.classList.contains('dark');
-    const theme = isDark ? 'dark' : 'light';
-    
+    const theme = getCurrentTheme();
+
     const giscusFrame = document.querySelector('iframe.giscus-frame');
     if (giscusFrame) {
       giscusFrame.contentWindow.postMessage(
@@ -33,22 +66,60 @@
       );
     }
   }
-  
-  // 监听 body class 变化
-  document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(updateGiscusTheme, 1000);
-    
-    const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
+
+  // 等待 Giscus 加载完成后更新主题
+  function waitForGiscusAndUpdate() {
+    const checkGiscus = setInterval(() => {
+      const giscusFrame = document.querySelector('iframe.giscus-frame');
+      if (giscusFrame) {
+        clearInterval(checkGiscus);
+        updateGiscusTheme();
+      }
+    }, 100);
+
+    // 最多等待 10 秒
+    setTimeout(() => clearInterval(checkGiscus), 10000);
+  }
+
+  // 页面加载完成后初始化
+  document.addEventListener('DOMContentLoaded', function () {
+    // 立即检查一次
+    updateGiscusTheme();
+    // 等待 Giscus 加载
+    waitForGiscusAndUpdate();
+
+    // 监听主题切换按钮点击
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function () {
+        // 延迟更新，确保 body 类已经改变
+        setTimeout(updateGiscusTheme, 100);
+      });
+    }
+
+    // 监听 body class 变化（备用方案）
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
           setTimeout(updateGiscusTheme, 100);
         }
       });
     });
-    
+
     observer.observe(document.body, {
       attributes: true,
       attributeFilter: ['class']
     });
+
+    // 监听系统主题变化
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+        // 只有在 auto 模式下才响应系统主题变化
+        const savedTheme = localStorage.getItem('pref-theme');
+        if (!savedTheme || savedTheme === 'auto') {
+          setTimeout(updateGiscusTheme, 100);
+        }
+      });
+    }
   });
 </script>

@@ -1,15 +1,12 @@
 ---
 date: '2025-11-06T10:40:06+08:00'
 draft: false
-title: '如何远程SSH到WSL'
+title: '如何SSH远程连接到WSL'
 tags: ['内网', 'wsl']
 categories: ["内网"]
-description: "如何远程SSH到WSL"
 ---
 
-# 如何远程SSH到WSL（Windows Subsystem for Linux）
-
-WSL（Windows Subsystem for Linux）是一个在 Windows 10 和 Windows 11 上能够原生运行 Linux 二进制可执行文件（ELF格式）的兼容层。它能让开发者在 Windows 系统上直接运行一个完整的 Linux 发行版（例如 Ubuntu、Debian、Kali 等），而无需创建虚拟机或设置双系统。
+> 💡 **WSL（Windows Subsystem for Linux）** 是一个在 Windows 10 和 Windows 11 上能够原生运行 Linux 二进制可执行文件（ELF格式）的兼容层。它能让开发者在 Windows 系统上直接运行一个完整的 Linux 发行版（例如 Ubuntu、Debian、Kali 等），而无需创建虚拟机或设置双系统。
 
 ### 前提条件：开启镜像模式网络
 
